@@ -1,0 +1,18 @@
+{% extends "ForumBase.html" %}
+{% block body %}
+<form action='/new' method='POST'>
+<div id='tags'>
+</div>
+{% csrf_token %}
+{{form.as_p}}
+<select id='select_tag'>
+<option value=''>-------</option>
+{% for i in tags %}
+<option value={{i.pk}}>{{i}}</option>
+{% endfor %}
+</select>
+<input type='hidden' name='tags_id' id ='tags_id' value='-'>
+<input type='submit' value='Create'>
+</form>
+<button id="add_" onclick="add_tag()">Add tag</button>
+{% endblock %}

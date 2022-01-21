@@ -1,0 +1,44 @@
+{% extends 'ForumBase.html' %}
+{% block body %}
+<p><a href='/users/{{one.user.pk}}'>{{one.user.username}}</a></p>
+{% if user.is_authenticated %}
+{% if user.pk == one.user.pk %}
+<a href="{% url 'editor' one.pk %}">Edit</a>
+{% endif %}
+{% endif %}
+<p>{{one.date.date}}</p>
+{% for i in one.tags.all %}
+<a href='/tag{{i.pk}}'>{{i.title}}</a>
+{% endfor %}
+<h2>{{one.title}}</h2>
+{{ one.descr|linebreaks }}
+{% if user.is_authenticated %}
+<form action='comm/{{one.pk}}' method='POST'>
+{% csrf_token %}
+{{form.as_p}}
+<input type='submit' value='Leave a comment'>
+</form>
+{% endif %}
+{% if comms %}
+<div class='comm_block'>
+{% for c in comms %}
+<div id='c{{c.pk}}'>
+<p>{{c.user.username}}</p>
+<p>{{c.data}}</p>
+{{ c.content|linebreaks }}
+<p>{{c.date.date}}</p>
+<button onclick="replyf('{{c.pk}}','{{c.user.username}}')">Reply</button>
+{% for re in c.all_replies.all %}
+<div id='c{{re.pk}}' style='margin-left:50px;'>
+<p>{{re.user.username}}</p>
+<p>{{re.data}}</p>
+{{ re.content|linebreaks }}
+<p>{{re.date.date}}</p>
+<button onclick="replyf('{{re.pk}}','{{re.user.username}}')">Reply</button>
+</div>
+{% endfor %}
+</div>
+{% endfor %}
+</div>
+{% endif %}
+{% endblock %}

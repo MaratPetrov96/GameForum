@@ -1,0 +1,17 @@
+{% extends 'ForumBase.html' %}
+{% block body %}
+<h1>{{us.username}}</h1>
+<p><a href="{% url 'user_subs' us.pk %}">Подписки</a></p>
+{% for i in records %}
+{% include 'RecordHTML.html' %}
+{% endfor %}
+<div class='pages'>
+{% if records.has_previous %}
+<a href='{% url 'user' us.pk %}/{{ records.previous_page_number }}'>{{ records.previous_page_number }}</a>
+{% endif %}
+<span>{{records.number}}</span>
+{% if records.has_next %}
+<a href='{% url 'user' us.pk %}/{{ records.next_page_number }}'>{{ records.next_page_number }}</a>
+{% endif %}
+</div>
+{% endblock %}

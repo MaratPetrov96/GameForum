@@ -1,0 +1,8 @@
+<div class='preview'>
+<div class='record_tags'>
+{% for tg in i.tags.all %}
+<li style='display:block;float:left;'><a href='/tag{{tg.pk}}'>{{tg.title}}</a></li>
+{% endfor %}
+</div>
+<h2><a href="{% url 'record' i.pk %}">{{i.title}}</a></h2><span>by </span><a href="{% url 'user' i.user.pk %}">{{i.user.username}}</a><span style='margin-left:50px;'>{{i.comms.count}} comms</span>
+</div>

@@ -1,0 +1,15 @@
+{% extends 'ForumBase.html' %}
+{% block body %}
+<div class='records'>
+{% for i in data %}
+<div class='preview'>
+<div class='record_tags'>
+{% for tg in i.tags %}
+<li style='display:block;float:left;'><a href='tag{{tg.pk}}'>{{tg.title}}</a></li>
+{% endfor %}
+</div>
+<h2><a href='/records/{{i.pk}}'>{{i.title}}</a></h2>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

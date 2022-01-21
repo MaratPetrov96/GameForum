@@ -1,0 +1,32 @@
+from django.urls import path
+from . import views
+
+urlpatterns=[
+    path('',views.main,name='main'),
+    path('popular',views.popular),
+    path('popular/<int:pg>',views.popular),
+    path('records/<int:pk>',views.IdeaView.as_view(),name='record'),
+    path('records/<int:pk>/edit',views.IdeaEdit.as_view(),name='editor'),
+    path('records/<int:pk>/<int:pg>',views.IdeaView.as_view()),
+    path('new',views.create_idea,name='new'),
+    path('records/comm/<int:pk>',views.comment),
+    path('reply/<int:com>',views.reply),
+    path('tags',views.TagsView.as_view()),
+    path('tags/<int:pg>',views.TagsView.as_view()),
+    path('tag<int:pk>',views.tag.as_view(),name='tag'),
+    path('tag<int:pk>/<int:pg>',views.tag.as_view()),
+    path('sign',views.signup),
+    path('login',views.Login),
+    path('logout',views.LogOut),
+    path('all',views.records),
+    path('all/<int:pg>',views.records),
+    path('<int:pk>/editor',views.editor),
+    path('user/<int:pk>/<int:pg>',views.user_page,name='user'),
+    path('user/<int:pk>',views.user_page,name='user'),
+    path('<int:pk>/sub',views.subs),
+    path('<int:pk>/subs',views.user_subs,name='user_subs'),
+    path('<int:pk>/subs/<int:pg>',views.user_subs,name='user_subs'),
+    path('search/<str:query>',views.search_results,name='search'),
+    path('search/<str:query>/<int:pg>',views.search_results,name='search'),
+    path('search',views.search),
+]

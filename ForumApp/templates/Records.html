@@ -1,0 +1,30 @@
+{% extends 'ForumBase.html' %}
+{% block body %}
+{% if subs %}
+{% if user not in tag.subscribers.all %}
+<form action='/{{tag.pk}}/sub'>
+{% csrf_token %}
+<input type='submit' value='Subscribe'>
+</form>
+{% else %}
+<form action='/{{tag.pk}}/sub'>
+{% csrf_token %}
+<input type='submit' value='Unsubscribe'>
+</form>
+{% endif %}
+{% endif %}
+<div class='records'>
+{% for i in data %}
+{% include 'RecordHTML.html' %}
+{% endfor %}
+</div>
+<div class='pages'>
+{% if data.has_previous %}
+<a href='/{{filter}}/{{ data.previous_page_number }}'>{{ data.previous_page_number }}</a>
+{% endif %}
+<span>{{data.number}}</span>
+{% if data.has_next %}
+<a href='/{{filter}}/{{ data.next_page_number }}'>{{ data.next_page_number }}</a>
+{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'ForumBase.html' %}
+{% block body %}
+<form action='/{{one.pk}}/editor' method='POST'>
+<ul id='tags'>
+{% for t in one.tags.all %}
+<li class='added_tag' name='{{t.pk}}' onclick='remove_tag(this)'>{{t.title}}</li>
+{% endfor %}
+</ul>
+{% csrf_token %}
+{{form.as_p}}
+<select id='select_tag'>
+<option value=''>-------</option>
+{% for i in tags %}
+<option value={{i.pk}}>{{i}}</option>
+{% endfor %}
+</select>
+<input type='hidden' name='tags_id' id ='tags_id' value='-{{one_tags}}-'>
+<input type='submit' value='Update'>
+</form>
+<button id="add_" onclick="add_tag()">Add tag</button>
+{% endblock %}

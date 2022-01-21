@@ -1,0 +1,11 @@
+{% extends 'ForumBase.html' %}
+{% block body %}
+<ul>
+{% for i in data %}
+<li class='tag'>
+<a href='/tag{{i.pk}}'>{{i.title}}</a>
+<p>{{i.ideas.count}} tags</p>
+</li>
+{% endfor %}
+</ul>
+{% endblock %}

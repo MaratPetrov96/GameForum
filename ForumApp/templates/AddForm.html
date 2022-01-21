@@ -1,0 +1,14 @@
+<form method='POST' action='/search'>
+{{form.as_p}}
+<select name='tag1'>
+{% for i in tags %}
+<option value={{i}}>{{i}}</option>
+{% endfor %}
+</select>
+<select name='tag2'>
+{% for i in tags %}
+<option value={{i}}>{{i}}</option>
+{% endfor %}
+</select>
+<input type='submit' value='Добавить'>
+</form>

@@ -1,0 +1,8 @@
+{% extends 'ForumBase.html' %}
+{% block body %}
+<form action='\sign' method='POST'>
+{% csrf_token %}
+{{sign.as_p}}
+<input type='submit' value='Регистрация'>
+</form>
+{% endblock %}

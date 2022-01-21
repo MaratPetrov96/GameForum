@@ -1,0 +1,61 @@
+﻿*{
+font-size:20px;
+}
+aside{
+left: auto;
+width:280px;
+height:100%;
+position:fixed;
+background-color:#4f5a6e;
+}
+aside *{
+color:#a7b3cb;
+}
+nav *{
+margin-left:30px;
+}
+nav{
+z-index: 2500;
+}
+.page_header{
+background-color: #8E8E8E;
+}
+.content{
+margin-left: 290px;
+}
+.preview{
+margin:25px 0;
+}
+.main{
+margin: 0 auto;
+max-width: 60%;
+}
+.record_tags{
+padding-bottom:20px;
+}
+.record_tags li{
+margin-right: 20px;
+}
+.tag{
+display: inline-block;
+margin:20px;
+}
+.added_tag{
+border: 1px solid;
+}
+#tags{
+border: 1px solid;
+padding-top: 10px;
+padding-bottom: 10px;
+margin-top: 10px;
+width: 500px;
+}
+#tags li{
+display: inline-block;
+margin-left: 20px;
+}
+.comm_block{
+border-width:4px;
+border-style:groove;
+margin-top:10px;
+}
